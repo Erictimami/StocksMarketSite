@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!-- my own css file link in the last position to be priority-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/home.css') }}">   
+    <script src="{{ url_for('static', filename='JS/home.js') }}"></script>
+    <style>
+</style>
+</head>
+<body>
+  <nav class="navbar mb-50">
+    <img src="{{url_for('static', filename='img/tesla.png')}}">
+    <img id="google" src="{{url_for('static', filename='img/google.png')}}">
+    <img src="{{url_for('static', filename='img/facebook.png')}}">
+    <img src="{{url_for('static', filename='img/apple.jpg')}}">
+    <img src="{{url_for('static', filename='img/microsoft.jpeg')}}">    
+  </nav>
+  <nav class="navbar navbar-dark bg-dark mb-50">
+    <h6> Welcome {{session['first_name']}}! You are in the right place. </h6>
+    <a href='/log_off' class="btn btn-outline-success my-2 my-sm-0 mf-800">Logout</a>
+  </nav>
+  <nav class="navbar mb-50" id="button_nav">    
+    <div class="btn-group">
+      <button type="button" class="btn btn-success">Graphs</button>
+      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Tesla</a>
+        <a class="dropdown-item" href="#">Google</a>
+        <a class="dropdown-item" href="#">Apple</a>
+        <a class="dropdown-item" href="#">All</a>
+      </div>
+    </div>
+    <div class="btn-group col">
+      <button type="button" class="btn btn-success">Other Graphs</button>
+      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Microsoft</a>
+        <a class="dropdown-item" href="#">facebook</a>
+        <a class="dropdown-item" href="#">All</a>
+      </div>
+    </div>
+    <div class="btn-group col">
+      <button type="button" class="btn btn-success">History</button>
+      <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Recent</a>
+        <a class="dropdown-item" href="#">All</a>
+        <a class="dropdown-item" href="#">about me</a>
+      </div>
+    </div>
+  </nav>
+    <div class="main_content">
+
+        <nav class="bd-links">
+          <div class="bd-toc-item active">
+            <a class="bd-toc-link" href="">Graphs</a>
+            <ul class="nav bd-sidenav">
+              <li><a href="">Tesla</a></li><br>
+              <li><a href="">Google</a></li><br>
+              <li><a href="">Apple</a></li><br>
+              <li><a href="">All</a></li><br>
+            </ul>
+          </div>
+          <div class="bd-toc-item active">
+            <a class="bd-toc-link" href="">Other Graphs</a>
+            <ul class="nav bd-sidenav">
+              <li><a href="">microsoft</a></li><br>
+              <li><a href="">facebook</a></li><br>
+              <li><a href="">All</a></li><br>
+            </ul>
+          </div>
+          <div class="bd-toc-item active">
+            <a class="bd-toc-link" href="">History</a>
+            <ul class="nav bd-sidenav">
+              <li><a href="">Recent</a></li><br>
+              <li><a href="">all</a></li><br>
+              <li><a href="">About me</a></li><br>
+            </ul>
+          </div>
+        </nav>
+        <div class="info">
+          
+        </div>
+
+    </div>
+</body>
+</html>

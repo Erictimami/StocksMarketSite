@@ -1,0 +1,76 @@
+body{
+    margin: auto;
+    width: 100%;
+    border: solid 1px;
+    background-color: whitesmoke;
+}
+
+nav{
+    color: green;
+    height: 60px;
+
+}
+nav img{
+    height: 40px;
+    width: 40px;
+    margin: 0px 0px 0px 70px;
+}
+.icon_side img{
+    height: 40px;
+    width: 40px;
+    margin: auto;
+}
+#google{
+    width: 60px;
+}
+.container{
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    padding-top: 30px;
+    padding-left: 0px;
+    display: inline-block;
+    vertical-align: top;
+    border-left: solid 2px;
+
+}
+.icon_side{
+    margin: 0px;
+    text-align: center;
+    width: 18%;
+    padding-top: 30px;
+    padding-left: 0px;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 500px;
+}
+h2{
+    width: 63%;
+    height: 100px;
+    margin: 50px 0px 0px 150px;
+}
+nav h3{
+    width: 30%;
+    height: 100px;
+    margin: 80px 0px 0px 40%;
+}
+h3{
+    width: 38%;
+    height: 100px;
+    margin: 80px 0px 0px 31%;
+    color: green;
+}
+h5{
+    width: 28%;
+    height: 100px;
+    margin: 0px 0px 100px 36%;
+}
+a{
+    color: blue;
+    text-decoration: underline;
+}
+
+p{
+    font-weight: bold;
+
+}

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/home.css') }}"> 
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+
+<script>
+
+</script>
+
+<body>{{all_data}}
+
+        
+    <nav class="navbar">
+        <img src="{{url_for('static', filename='img/tesla.png')}}">
+        <img id="google" src="{{url_for('static', filename='img/google.png')}}">
+        <img src="{{url_for('static', filename='img/facebook.png')}}">
+        <img src="{{url_for('static', filename='img/apple.jpg')}}">
+        <img src="{{url_for('static', filename='img/microsoft.jpeg')}}">
+    </nav>
+    <nav class="navbar navbar-dark bg-dark mb-50">
+        <h6> Welcome {{session['first_name']}}! You are in the right place. </h6>
+        <a href='/log_off' class="btn btn-outline-success my-2 my-sm-0 mf-800">Logout</a>
+    </nav>
+    <nav class="navbar btn-success mb-50" id="button_nav">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success">My Graphs</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                {%if me_len != 0%}
+                {%for elt in result_me%}
+                <a class="dropdown-item" href="/graphs/{{elt['id']}}">{{elt['name']}}</a>
+                {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+        <div class="btn-group col">
+            <button type="button" class="btn btn-success">Other Graphs</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                {%if other_len != 5%}
+                {%for elt in result_other%}
+                <a class="dropdown-item" href="/graphs/{{elt['id']}}">{{elt['name']}}</a>
+                {%endfor%}
+                {%endif%}
+            </div>
+        </div>
+        <div class="btn-group col">
+            <button type="button" class="btn btn-success">History</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/history/1">Recent</a>
+                <a class="dropdown-item" href="/history/1">All</a>
+                <a class="dropdown-item" href="history/1">about me</a>
+            </div>
+        </div>
+    </nav>
+    <div class="main_content">
+
+        <nav class="bd-links">
+            <div class="bd-toc-item active">
+                <a class="bd-toc-link" href="">My Graphs</a>
+                <ul class="nav bd-sidenav">
+                    {%if me_len !=0%}
+                    {%for elt in result_me%}
+                    <li><a class="dropdown-item" href="/graphs/{{elt['id']}}">{{elt['name']}}</a></li>
+                    {%endfor%}
+                    {%endif%}
+                </ul>
+            </div>
+            <div class="bd-toc-item active">
+                <a class="bd-toc-link" href="">Other Graphs</a>
+                <ul class="nav bd-sidenav">
+                    {%if other_len != 5%}
+                    {%for elt in result_other%}
+                    <li><a class="dropdown-item" href="/graphs/{{elt['id']}}">{{elt['name']}}</a></li>
+                    {%endfor%}
+                    {%endif%}
+                    <li><a href="/graphs/1">All</a></li>
+                </ul>
+            </div>
+            <div class="bd-toc-item active">
+                <a class="bd-toc-link" href="">History</a>
+                <ul class="nav bd-sidenav">
+                    <li><a href="/history/1">Recent</a></li>
+                    <li><a href="/history/1">all</a></li>
+                    <li><a href="/history/1">About me</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="info">
+            {% with messages = get_flashed_messages(category_filter=["success"]) %}
+            {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="graph">
+                    <button type="button" class="btn btn-success"><a href="/add_graph/4">ADD</a></button>
+                    <canvas id="myLineChart_2" class="chartjs" width="1030" height="514" style="display: block; width: 515px; height: 257px;"></canvas>
+            </div>
+
+            {%if me_len != 0%}
+            {%for elt in result_me%}
+            <div class="graph">
+                <button type="button" class="btn btn-danger"><a href="/remove_graph/{{elt['id']}}">Remove</a></button>
+                <canvas id="myLineChart" class="chartjs" width="1030" height="514" style="display: block; width: 515px; height: 257px;"></canvas>
+            </div>
+            {%endfor%}
+            {%endif%}
+
+            {%if other_len != 5%}
+            {%for elt in result_other%}
+            <div class="graph">
+                <button type="button" class="btn btn-success"><a href="/add_graph/{{elt['id']}}">ADD</a></button>
+                <canvas id="myLineChart" class="chartjs" width="1030" height="514" style="display: block; width: 515px; height: 257px;"></canvas>
+            </div>
+            {%endfor%}
+            {%endif%}
+        </div>
+
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+    <script src="./Line · Chart.js documentation_files/gitbook.js"></script>
+    <script src="./Line · Chart.js documentation_files/theme.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+  
+    <script type='text/JavaScript'>
+
+        var amazing = [];
+        for(var j=0, j++, j<5){
+            amazing.push({{all_data}})
+        }
+        console.log(amazing)
+
+        var ctx = document.getElementById("myLineChart").getContext('2d');
+        var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+        datasets: [{
+            label: 'Value of stock every 10 seconds',
+            data: amazing[0],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+        var ctx = document.getElementById("myLineChart_2").getContext('2d');
+        var myLineChart_2 = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200],
+        datasets: [{
+            label: 'Value of stock every 10 seconds',
+            data: amazing[1],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+            <!-- my own css file link in the last position to be priority-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/index.css') }}">   
+    <script src="{{ url_for('static', filename='JS/index.js') }}"></script>
+</head>
+<body>
+    <nav class="navbar mb-50">
+      <img src="{{url_for('static', filename='img/tesla.png')}}">
+      <img id="google" src="{{url_for('static', filename='img/google.png')}}">
+      <img src="{{url_for('static', filename='img/facebook.png')}}">
+      <img src="{{url_for('static', filename='img/apple.jpg')}}">
+      <img src="{{url_for('static', filename='img/microsoft.jpeg')}}">
+      
+    </nav>
+    <nav class="navbar navbar-dark bg-dark mb-100">
+      <h3>Site of Investments</h3>
+    </nav>
+    <div class="icon_side">
+        <p>The best way to become rich easily !</p><br>
+        <p>Make your secure investments working for you!</p><br>
+        <img src="{{url_for('static', filename='img/tesla.png')}}"><br><br>
+        <img id="google" src="{{url_for('static', filename='img/google.png')}}"><br><br>
+        <img src="{{url_for('static', filename='img/facebook.png')}}"><br><br>
+        <img src="{{url_for('static', filename='img/apple.jpg')}}"><br><br>
+        <img src="{{url_for('static', filename='img/microsoft.jpeg')}}">
+    </div>
+    <div class="container">
+      <h2> Welcome to the platform of the future of secure investments with LESS risk.</h2>
+      <h3>!!!! Unbelievable !!!!</h3>
+      <h5>To move on, Please click <a href="/login_registration"> Here to login or register ! </a></h5>
+    </div>
+</body>
+</html>

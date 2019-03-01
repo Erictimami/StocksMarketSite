@@ -1,0 +1,69 @@
+   
+body{
+    margin: auto;
+    width: 1000px;
+    border: solid 1px;
+    background-color: whitesmoke;
+}
+
+nav{
+    color: green;
+    height: 50px;
+
+}
+
+nav img{
+    height: 40px;
+    width: 40px;
+    margin: 0px 0px 0px 70px;
+}
+
+
+#google{
+    width: 70px;
+}
+
+.main_content{ 
+    border: solid 1px;
+    width: 100%;
+    min-height: 600px;
+    padding: 0px 0px 10px 10px;
+}
+.navbar{ 
+    border: solid 1px;
+    width: 100%;
+    height: 45px;
+    padding: 0px;
+    float: right;
+}
+#button_nav{ 
+    padding: 0px 10% 0px 40%;
+    height: 40px; 
+}
+
+
+h6{
+    width: 40%;
+    height: 20px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.graph{
+    width: 68%;
+    height: 500px;
+    vertical-align: top;
+    display: inline-block;
+    border: solid 1px;
+    margin: 25px 0px 0px 5px; 
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+}
+
+form{
+    width: 30%;
+    display: inline-block;
+    vertical-align: top;
+}
+

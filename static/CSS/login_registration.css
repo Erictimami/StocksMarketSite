@@ -1,0 +1,100 @@
+
+body{
+    margin: auto;
+    width: 1000px;
+    border: solid 1px;
+    background-color: whitesmoke;
+}
+
+nav{
+    color: green;
+    height: 60px;
+
+}
+nav img{
+    height: 40px;
+    width: 40px;
+    margin: 0px 0px 0px 70px;
+}
+.icon_side p{
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
+.icon_side img{
+    height: 40px;
+    width: 40px;
+    margin: auto;
+}
+#google{
+    width: 60px;
+}
+
+
+.container{
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    padding-top: 30px;
+    padding-left: 0px;
+    display: inline-block;
+    vertical-align: top;
+    border-left: solid 2px;
+
+}
+.icon_side{
+    margin: 0px;
+    text-align: center;
+    width: 18%;
+    padding-top: 30px;
+    padding-left: 0px;
+    display: inline-block;
+    vertical-align: top;
+    min-height: 500px;
+}
+
+
+nav h3{
+    width: 30%;
+    height: 100px;
+    margin: 80px 0px 0px 40%;
+}
+
+h3{
+    width: 300px;
+    margin-left: 20px;
+}
+
+p{
+    color: red;
+    font-size: 12px;
+}
+h5{
+    width: 300px;
+    margin-left: 0px;
+}
+
+form{
+    padding-top: 10px;
+    text-align: left;
+    width: 40%;
+    vertical-align: top;
+    display: inline-block;
+    margin-right: 3%;
+    margin-left: 3%;
+
+}
+
+
+#sub{
+    margin-left: 0px!important;
+    background-color: green;
+    margin-top: 7px!important;
+}
+
+a{
+    color: blue;
+    padding-left: 900px;
+}
+
+

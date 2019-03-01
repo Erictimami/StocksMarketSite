@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/my_graph.css') }}"> 
+</head>
+
+<body>
+    <nav class="navbar">
+        <img src="{{url_for('static', filename='img/tesla.png')}}">
+        <img id="google" src="{{url_for('static', filename='img/google.png')}}">
+        <img src="{{url_for('static', filename='img/facebook.png')}}">
+        <img src="{{url_for('static', filename='img/apple.jpg')}}">
+        <img src="{{url_for('static', filename='img/microsoft.jpeg')}}">
+    </nav>
+    <nav class="navbar navbar-dark bg-dark mb-50">
+        <h6> Welcome {{session['first_name']}}! You are in the right place. </h6>
+        <a href='/log_off' class="btn btn-outline-success my-2 my-sm-0 mf-800">Logout</a>
+    </nav>
+    <nav class="navbar btn-success mb-50" id="button_nav">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success">My Graphs</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/graphs/1">Tesla</a>
+                <a class="dropdown-item" href="/graphs/1">Google</a>
+                <a class="dropdown-item" href="/graphs/1">Apple</a>
+            </div>
+        </div>
+        <div class="btn-group col">
+            <button type="button" class="btn btn-success">Other Graphs</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/graphs/1">Microsoft</a>
+                <a class="dropdown-item" href="/graphs/1">facebook</a>
+                <a class="dropdown-item" href="/graphs/1">All</a>
+            </div>
+        </div>
+        <div class="btn-group col">
+            <button type="button" class="btn btn-success">History</button>
+            <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/history/1">Recent</a>
+                <a class="dropdown-item" href="/history/1">All</a>
+                <a class="dropdown-item" href="history/1">about me</a>
+            </div>
+        </div>
+    </nav>
+    <div class="main_content">
+        {% with messages = get_flashed_messages(category_filter=["hackers"]) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% with messages = get_flashed_messages(category_filter=["logged_out"]) %}
+        {% if messages %}
+        {% for message in messages %}
+        <p>{{message}}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/process_setting_graph" method="POST">    
+            <h5>Avoid risks by setting the graph of stock market!</h5>
+
+            <div class="form-group">
+                <label for="stock_min">Minimun value:</label>
+                {% with messages = get_flashed_messages(category_filter=["stock_min"]) %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="text" class="form-control" id="" aria-describedby="emailHelp" name="stock_min">
+            </div>
+            <div class="form-group">
+                <label for="stock_max">Maximum value:</label>
+                {% with messages = get_flashed_messages(category_filter=["stock_max"]) %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="text" class="form-control" id="stock_max" aria-describedby="emailHelp" name="stock_max">
+            </div>
+                
+            <div class="form-group">
+                <label for="speed_up">Speed up:</label>
+                {% with messages = get_flashed_messages(category_filter=["speed_up"]) %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                    <input type="text" class="form-control" id="speed_up" aria-describedby="emailHelp" name="speed_up">
+            </div>
+            <div class="form-group">
+                <label for="speed_down">speed down:</label>
+                {% with messages = get_flashed_messages(category_filter=["speed_down"]) %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="text" class="form-control" id="speed_down" aria-describedby="emailHelp" name="speed_down">
+            </div> 
+            <div class="form-group">
+                <label for="stock_avg">Average value:</label>
+                {% with messages = get_flashed_messages(category_filter=["stock_avg"]) %}
+                {% if messages %}
+                {% for message in messages %}
+                <p>{{message}}</p>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                <input type="text" class="form-control" id="stock_avg" aria-describedby="emailHelp" name="stock_avg">
+            </div> 
+            <input class="btn btn-primary ml-5 mt-3" id="sub" type="submit" value="Submit!" >
+        </form>
+    
+        <div class="graph">
+            <button type="button" class="btn btn-success"><a href="/add_graph/1">ADD</a></button>
+            <button type="button" class="btn btn-danger"><a href="/remove_graph/1">Remove</a></button>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

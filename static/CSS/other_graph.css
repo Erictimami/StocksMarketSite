@@ -1,0 +1,98 @@
+   
+body{
+    margin: auto;
+    width: 1000px;
+    border: solid 1px;
+    background-color: whitesmoke;
+}
+
+nav{
+    color: green;
+    height: 50px;
+
+}
+
+nav img{
+    height: 40px;
+    width: 40px;
+    margin: 0px 0px 0px 70px;
+}
+
+
+#google{
+    width: 70px;
+}
+
+.main_content{ 
+    border: solid 1px;
+    width: 100%;
+    min-height: 600px;
+    padding: 0px 0px 10px 10px;
+}
+.navbar{ 
+    border: solid 1px;
+    width: 100%;
+    height: 45px;
+    padding: 0px;
+    float: right;
+}
+#button_nav{ 
+    padding: 0px 10% 0px 40%;
+    height: 40px;
+    
+}
+
+.main_content nav{
+    width: 15%;
+    min-height: 500px;
+    padding: 5px 0px 0px 1%;
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2%;
+}
+.info{
+    width: 78%;
+    min-height: 700px;
+    border-left: solid 2px;
+    padding: 5px 0px 0px 1%;
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 4%
+}
+
+li {
+    color: gray;
+    margin: 5px 0px 0px 0px;
+    display: block;
+    width: 60%;
+}
+.bd-toc-item{
+    margin: 10px 0px 0px 1%;
+    color: black!important;
+}
+
+ul{
+    margin-left: 7%;
+}
+li a{
+    color: gray;
+}
+h6{
+    width: 40%;
+    height: 20px;
+    vertical-align: top;
+    font-weight: bold;
+}
+
+.graph{
+    width: 48%;
+    height: 350px;
+    vertical-align: top;
+    display: inline-block;
+    border: solid 1px;
+    margin: 25px 0px 0px 5px; 
+    text-align: center;
+}
+
